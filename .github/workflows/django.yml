@@ -64,8 +64,8 @@ jobs:
     - name: Run linting with flake8
       run: |
         source .venv/bin/activate
-        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+        flake8 --exclude=.venv,venv,env,.env,migrations,__pycache__,build,dist,*.egg-info,.tox,.coverage,htmlcov,.pytest_cache,.mypy_cache,staticfiles,media --count --select=E9,F63,F7,F82 --show-source --statistics .
+        flake8 --exclude=.venv,venv,env,.env,migrations,__pycache__,build,dist,*.egg-info,.tox,.coverage,htmlcov,.pytest_cache,.mypy_cache,staticfiles,media --count --exit-zero --max-complexity=10 --max-line-length=88 --statistics .
 
     - name: Check code formatting with Black
       run: |
