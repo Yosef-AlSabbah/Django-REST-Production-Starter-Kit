@@ -23,10 +23,12 @@ DATABASES = {
     }
 }
 
+
 # Redis Settings for Development
 def get_redis_url_dev(db_index: int) -> str:
     """Generate Redis URL for development environment."""
     return f"redis://:rawad_dev_redis_password@rawad_redis:6379/{db_index}"
+
 
 # Override Redis configuration for development
 CACHES = {

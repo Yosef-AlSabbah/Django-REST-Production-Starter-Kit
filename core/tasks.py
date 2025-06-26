@@ -5,18 +5,25 @@ This module contains all asynchronous tasks for the job matching,
 freelance, and donation system.
 """
 
-from celery import shared_task
-from django.core.mail import send_mail
-from django.contrib.sessions.models import Session
-from django.utils import timezone
-from django.core.management import call_command
 import logging
+
+from celery import shared_task
+from django.contrib.sessions.models import Session
+from django.core.mail import send_mail
+from django.core.management import call_command
+from django.utils import timezone
 
 logger = logging.getLogger(__name__)
 
 
-@shared_task(bind=True, autoretry_for=(Exception,), retry_kwargs={'max_retries': 3, 'countdown': 60})
-def send_email_task(self, subject, message, from_email, recipient_list, html_message=None):
+@shared_task(
+    bind=True,
+    autoretry_for=(Exception,),
+    retry_kwargs={"max_retries": 3, "countdown": 60},
+)
+def send_email_task(
+    self, subject, message, from_email, recipient_list, html_message=None
+):
     """
     Send email asynchronously.
 
@@ -117,7 +124,7 @@ def backup_database():
     """
     try:
         # Use Django's dumpdata command or custom backup logic
-        call_command('dumpdata', '--output=/app/backups/backup.json')
+        call_command("dumpdata", "--output=/app/backups/backup.json")
         logger.info("Database backup completed successfully")
         return "Database backup completed"
     except Exception as exc:

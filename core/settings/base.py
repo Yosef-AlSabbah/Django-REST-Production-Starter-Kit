@@ -96,10 +96,12 @@ DATABASES = {
     }
 }
 
+
 # Redis URL generator
 def get_redis_url(db_index: int) -> str:
     """Generate Redis URL with proper authentication."""
     return f"redis://:{settings.REDIS_PASSWORD}@{settings.REDIS_HOST}:{settings.REDIS_PORT}/{db_index}"
+
 
 # Cache Configuration
 CACHES = {
@@ -111,7 +113,7 @@ CACHES = {
             "CONNECTION_POOL_KWARGS": {
                 "max_connections": 50,
                 "retry_on_timeout": True,
-            }
+            },
         },
         "KEY_PREFIX": "rawad_cache",
         "TIMEOUT": 300,  # 5 minutes default timeout
@@ -149,7 +151,7 @@ AUTH_PASSWORD_VALIDATORS = [
         "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
         "OPTIONS": {
             "min_length": 8,
-        }
+        },
     },
     {
         "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
@@ -213,6 +215,7 @@ REST_FRAMEWORK = {
 
 # JWT Configuration
 from datetime import timedelta
+
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=60),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=7),

@@ -6,6 +6,7 @@ in the job matching, freelance, and donation system.
 """
 
 import os
+
 from celery import Celery
 from django.conf import settings
 
@@ -42,6 +43,7 @@ app.conf.update(
     worker_prefetch_multiplier=4,
     worker_max_tasks_per_child=1000,
 )
+
 
 @app.task(bind=True)
 def debug_task(self):

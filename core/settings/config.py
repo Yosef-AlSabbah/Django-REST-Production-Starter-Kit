@@ -6,6 +6,7 @@ for the application using the pydantic-settings library. It provides
 type-safe configuration management with validation and environment
 variable parsing capabilities.
 """
+
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -14,6 +15,7 @@ class Settings(BaseSettings):
     Application settings class that inherits from BaseSettings.
     This class defines the configuration settings for the Rawad Al Furas application.
     """
+
     model_config = SettingsConfigDict(
         env_file=".env",  # Path to the environment file
         env_file_encoding="utf-8",  # Encoding for the environment file
@@ -77,5 +79,6 @@ class Settings(BaseSettings):
     EMAIL_HOST_USER: str = ""
     EMAIL_HOST_PASSWORD: str = ""
     DEFAULT_FROM_EMAIL: str = "noreply@rawad.com"
+
 
 settings = Settings()
