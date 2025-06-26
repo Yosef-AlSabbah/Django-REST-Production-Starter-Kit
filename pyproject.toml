@@ -1,0 +1,39 @@
+[project]
+name = "rawad-al-furas-job-matching-freelance-donation-system-backend"
+version = "0.1.0"
+description = "Rawad Al Furas Job Matching, Freelance & Donation System Backend"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "celery[redis]>=5.5.3",
+    "django>=5.2.3",
+    "django-cors-headers>=4.7.0",
+    "django-debug-toolbar>=5.2.0",
+    "django-filter>=25.1",
+    "django-redis>=6.0.0",
+    "django-taggit>=6.1.0",
+    "djangorestframework>=3.16.0",
+    "djangorestframework-simplejwt>=5.5.0",
+    "djoser>=2.3.1",
+    "drf-spectacular>=0.28.0",
+    "drf-standardized-responses>=0.1.4",
+    "gunicorn>=23.0.0",
+    "psycopg[binary]>=3.2.9",
+    "pydantic-settings>=2.10.0",
+    "python-slugify>=8.0.4",
+    "whitenoise[brotli]>=6.9.0",
+    "pillow>=10.4.0",
+    "python-dotenv>=1.0.0",
+    "redis>=5.2.1",
+]
+
+[dependency-groups]
+dev = [
+    "black>=25.1.0",
+    "isort>=5.13.0",
+    "flake8>=7.0.0",
+    "pytest>=8.0.0",
+    "pytest-django>=4.8.0",
+    "factory-boy>=3.3.0",
+    "django-extensions>=3.2.0",
+]
