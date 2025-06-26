@@ -83,8 +83,16 @@ jobs:
         REDIS_URL: redis://localhost:6379/0
         SECRET_KEY: test-secret-key-for-github-actions
         DEBUG: 'True'
-        ALLOWED_HOSTS: localhost,127.0.0.1
-        CORS_ALLOWED_ORIGINS: http://localhost:3000,http://127.0.0.1:3000
+        ALLOWED_HOSTS: '["localhost", "127.0.0.1"]'
+        CORS_ALLOWED_ORIGINS: '["http://localhost:3000", "http://127.0.0.1:3000"]'
+        REDIS_HOST: localhost
+        REDIS_PORT: 6379
+        REDIS_PASSWORD: test-redis-password
+        POSTGRES_NAME: test_db
+        POSTGRES_USER: postgres
+        POSTGRES_PASSWORD: postgres
+        POSTGRES_HOST: localhost
+        POSTGRES_PORT: 5432
       run: |
         source .venv/bin/activate
         python manage.py collectstatic --noinput
